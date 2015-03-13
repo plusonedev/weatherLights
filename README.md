@@ -15,11 +15,11 @@ Three seperate APIs are utilized to determine the current color output.  The Goo
 Config.ini has two values that must be set.  [APIKEYS][weatherUnderground] stores your Weather Underground api key and [APIKEYS][google] stores your Google Developer API access key.
 
 ## Dependencies
-weatherlights.py 
-  urllib.request: http://docs.python-requests.org/en/latest/
+weatherlights.py:
+urllib.request: http://docs.python-requests.org/en/latest/
 
-rgbcolor.py
-  colour: http://pypi.python.org/pypi/colour
+rgbcolor.py:
+colour: http://pypi.python.org/pypi/colour
 
 
 ## Use
