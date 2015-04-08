@@ -24,11 +24,25 @@ colour: http://pypi.python.org/pypi/colour
 
 ## Use
     from rgbcolor import RGBColor
-    from weatherlights import Location
- 
+    from location import Location
+    from weather import Weather
+    
     bevHills = Location(90210)
+    
+    # location properties available
+    bevHills.currentTime
+    bevHills.sunRise
+    bevHills.midDay
+    bevHills.sunSet
+    bevHills.endDay
+    
     bevHillsColor = RGBColor(bevHills)
-	
-    bevHillsColor.color()
-	[255, 104, 0]
+    
+    if Weather(bevHills.zipCode).severe:
+	# output severe weather colors
+	print([255,0,0])
+
+    else:
+	# output time based color
+    	bevHillsColor.color() #[255, 104, 0]
 
