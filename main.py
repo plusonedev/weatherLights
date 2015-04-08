@@ -1,8 +1,9 @@
 from rgbcolor import RGBColor
 from location import Location
+from weather import Weather
 
 
-auburn = Location(48611)
+auburn = Location(81054)
 
 print("Current:", auburn.currentTime)
 print("SunRise:", auburn.sunRise)
@@ -12,6 +13,9 @@ print("EndDay:", auburn.endDay)
 
 auburnColor = RGBColor(auburn)
 
-ledColor = auburnColor.color()
+if Weather(auburn.zipCode).severe:
+	print("Severe Output:", [255,0,0])
+else:
+	ledColor = auburnColor.color()
+	print("RGB Output:", ledColor)
 
-print(ledColor)

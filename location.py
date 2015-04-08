@@ -12,11 +12,11 @@ class Location:
 		# save api keys and zipcode
 		self.weatherUndergroundKey = config['APIKEYS']['weatherUnderground']
 		self.googleAPIKey = config['APIKEYS']['google']
-		self.zipCode = zipCode
+		self.zip = zipCode
 		
 		#google geoCode API
 		# supply the given zip code and the apikey
-		geoCodeURL = "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:{0}&key={1}".format(self.zipCode, self.googleAPIKey)
+		geoCodeURL = "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:{0}&key={1}".format(self.zip, self.googleAPIKey)
 		
 		# save the returned latitude and longitude of the given zip code
 		geoResponse = urllib.request.urlopen(geoCodeURL)
@@ -74,7 +74,11 @@ class Location:
 		sunSetDT = datetime.datetime(int(year), int(month), int(day))
 		sunSetTM = datetime.time(int(sunset[0:2]), int(sunset[3:5]), int(sunset[6:]))
 		self.sunset = sunSetDT.combine(sunSetDT, sunSetTM)
-		
+	
+	@property
+	def zipCode(self):
+		return self.zip
+	
 	@property
 	def currentTime(self):
 		
@@ -83,7 +87,7 @@ class Location:
 		ts = self.time + self.rawOffset + self.dstOffset
 		currentTime = datetime.datetime.utcfromtimestamp(ts)
 		
-		return(currentTime)
+		return currentTime
 		
 	@property
 	def sunRise(self):
@@ -110,21 +114,3 @@ class Location:
 		
 		return endDay
 		
-		#endDay is needed to calculate the quadrantDelta
-#		self.endDay = datetime.time.max
-#		self.endDay = self.sunSet.combine(self.sunSet, self.endDay)
-
-
-#	@property
-#	def weather(self):
-		#update Weather information		
-		#send GET request to weatherUnderground API
-#		weatherRequestURL = "http://api.wunderground.com/api/{0}/conditions/q/{1}.json".format(self.apiKey, self.zipCode)
-		
-#		response = urllib.request.urlopen(weatherRequestURL)
-#		page = response.read().decode('utf-8')
-#		self.currentWeather = json.loads(page)
-#		self.latitude = self.currentWeather['current_observation']['display_location']['latitude']
-#		self.longitude = self.currentWeather['current_observation']['display_location']['longitude']
-		
-#		return 

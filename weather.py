@@ -25,12 +25,6 @@ class Weather:
 		
 	@property
 	def severe(self):
-		#update Weather information		
-		#send GET request to weatherUnderground API
 		return len(self.currentWeather['alerts'])
 
-test = Weather(81054)
-auburn = Weather(48611)
-print("severe place",test.severe)
-print("Auburn", auburn.severe)
 
