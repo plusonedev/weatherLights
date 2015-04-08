@@ -1,5 +1,5 @@
 from rgbcolor import RGBColor
-from weatherlights import Location
+from location import Location
 
 
 auburn = Location(48611)
