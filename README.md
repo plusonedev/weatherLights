@@ -39,10 +39,10 @@ colour: http://pypi.python.org/pypi/colour
     bevHillsColor = RGBColor(bevHills)
     
     if Weather(bevHills.zipCode).severe:
-	# output severe weather colors
-	print([255,0,0])
+        # output severe weather colors
+        print([255,0,0])
 
     else:
-	# output time based color
+        # output time based color
     	bevHillsColor.color() #[255, 104, 0]
 
